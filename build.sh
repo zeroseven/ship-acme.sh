@@ -1,3 +1,5 @@
 #!/bin/bash
 
-docker build --pull . -f Dockerfile -t zeroseven07/ship-acme.sh:latest
+NAME=zeroseven07/ship-acme.sh:latest
+
+docker build --no-cache --pull . -f Dockerfile -t $NAME && docker run --rm -it -v `pwd`/tests.sh:/tmp/test.sh --entrypoint "ash" $NAME /tmp/test.sh
